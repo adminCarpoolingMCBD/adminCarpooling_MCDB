@@ -1,0 +1,42 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "firstName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lastName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "phone",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "address",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "mail",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "age",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "experience",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "exp",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20160407124949",
+    "dto": "mapstruct",
+    "service": "serviceImpl",
+    "entityTableName": "driver",
+    "pagination": "pager"
+}
