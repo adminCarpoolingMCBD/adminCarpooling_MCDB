@@ -1,6 +1,8 @@
-# carpooling
+# coivit
 
 This application was generated using JHipster, you can find documentation and help at [https://jhipster.github.io](https://jhipster.github.io).
+
+## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
 
@@ -19,18 +21,19 @@ We use [Gulp][] as our build system. Install the Gulp command-line tool globally
 Run the following commands in two separate terminals to create a blissful development experience where your browser
 auto-refreshes when files change on your hard drive.
 
-    mvn
+    ./mvnw
     gulp
 
 Bower is used to manage CSS and JavaScript dependencies used in this application. You can upgrade dependencies by
 specifying a newer version in `bower.json`. You can also run `bower update` and `bower install` to manage dependencies.
 Add the `-h` flag on any command to see how you can use it. For example, `bower update -h`.
 
-# Building for production
 
-To optimize the carpooling client for production, run:
+## Building for production
 
-    mvn -Pprod clean package
+To optimize the coivit client for production, run:
+
+    ./mvnw -Pprod clean package
 
 This will concatenate and minify CSS and JavaScript files. It will also modify `index.html` so it references
 these new files.
@@ -41,21 +44,21 @@ To ensure everything worked, run:
 
 Then navigate to [http://localhost:8080](http://localhost:8080) in your browser.
 
-# Testing
+## Testing
 
-Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript` and can be run with:
+Unit tests are run by [Karma][] and written with [Jasmine][]. They're located in `src/test/javascript/` and can be run with:
 
     gulp test
 
 
 
-# Continuous Integration
+## Continuous Integration
 
 To setup this project in Jenkins, use the following configuration:
 
-* Project name: `carpooling`
+* Project name: `coivit`
 * Source Code Management
-    * Git Repository: `git@github.com:xxxx/carpooling.git`
+    * Git Repository: `git@github.com:xxxx/coivit.git`
     * Branches to build: `*/master`
     * Additional Behaviours: `Wipe out repository & force clone`
 * Build Triggers

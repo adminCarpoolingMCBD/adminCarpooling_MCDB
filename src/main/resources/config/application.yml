@@ -11,14 +11,17 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+
 spring:
+    application:
+        name: coivit
     jpa:
         open-in-view: false
         hibernate:
             ddl-auto: none
             naming-strategy: org.springframework.boot.orm.jpa.hibernate.SpringNamingStrategy
     messages:
-        basename: classpath:/i18n/messages
+        basename: i18n/messages
     mvc:
         favicon:
             enabled: false
@@ -46,16 +49,18 @@ jhipster:
         #allow-credentials: true
         #max-age: 1800
     mail:
-        from: carpooling@localhost
+        from: coivit@localhost
     security:
-        rememberme:
+        rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: a85eb20d2f467ed57dae6101be31905ef8c7fe97
+            key: 3d6d6975e7534e76244a559479df65febe4d9f0f
     swagger:
-        title: carpooling API
-        description: carpooling API documentation
+        title: coivit API
+        description: coivit API documentation
         version: 0.0.1
         termsOfServiceUrl:
-        contact:
+        contactName:
+        contactUrl:
+        contactEmail:
         license:
         licenseUrl:

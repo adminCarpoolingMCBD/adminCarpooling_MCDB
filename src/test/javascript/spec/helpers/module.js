@@ -1,4 +1,4 @@
-beforeEach(module('carpoolingApp'));
+beforeEach(module('coivitApp'));
 /**
  * returns a function whose angular will be replaced
  * with whatever mock was supplied.
