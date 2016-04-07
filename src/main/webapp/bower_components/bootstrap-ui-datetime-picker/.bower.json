@@ -37,7 +37,7 @@
     "tag": "2.2.3",
     "commit": "eec610606ca6a5abaf24408056bc08bdae3060a4"
   },
-  "_source": "git://github.com/gillardo/bootstrap-ui-datetime-picker.git",
+  "_source": "https://github.com/gillardo/bootstrap-ui-datetime-picker.git",
   "_target": "2.2.3",
   "_originalSource": "bootstrap-ui-datetime-picker"
 }

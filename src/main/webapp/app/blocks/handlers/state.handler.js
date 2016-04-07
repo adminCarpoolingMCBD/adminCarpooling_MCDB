@@ -2,13 +2,13 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .factory('stateHandler', stateHandler);
 
-    stateHandler.$inject = ['$rootScope', '$state',  '$window', 
+    stateHandler.$inject = ['$rootScope', '$state', '$translate', 'JhiLanguageService', 'translationHandler',
         'Auth', 'Principal', 'ENV', 'VERSION'];
 
-    function stateHandler($rootScope, $state,  $window, 
+    function stateHandler($rootScope, $state, $translate, JhiLanguageService, translationHandler,
         Auth, Principal, ENV, VERSION) {
         return {
             initialize: initialize
@@ -28,10 +28,15 @@
                 }
 
                 
+                // Update the language
+                JhiLanguageService.getCurrent().then(function (language) {
+                    $translate.use(language);
+                });
+                
             });
 
             var stateChangeSuccess = $rootScope.$on('$stateChangeSuccess',  function(event, toState, toParams, fromState, fromParams) {
-                var titleKey = 'coivit' ;
+                var titleKey = 'global.title' ;
 
                 // Remember previous state unless we've been redirected to login or we've just
                 // reset the state memory after logout. If we're redirected to login, our
@@ -46,7 +51,7 @@
                 if (toState.data.pageTitle) {
                     titleKey = toState.data.pageTitle;
                 }
-                $window.document.title = titleKey;
+                translationHandler.updateTitle(titleKey);
             });
 
             $rootScope.$on('$destroy', function () {

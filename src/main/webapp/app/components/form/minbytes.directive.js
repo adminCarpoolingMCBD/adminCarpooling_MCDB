@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .directive('minbytes', minbytes);
 
     function minbytes () {

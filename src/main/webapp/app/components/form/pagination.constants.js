@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .constant('paginationConstants', {
             'itemsPerPage': 20
         });

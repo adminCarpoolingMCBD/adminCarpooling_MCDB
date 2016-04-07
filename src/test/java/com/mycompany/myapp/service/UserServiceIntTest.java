@@ -1,6 +1,6 @@
 package com.mycompany.myapp.service;
 
-import com.mycompany.myapp.CoivitApp;
+import com.mycompany.myapp.AdminCarpoolingMcbdApp;
 import com.mycompany.myapp.domain.PersistentToken;
 import com.mycompany.myapp.domain.User;
 import com.mycompany.myapp.repository.PersistentTokenRepository;
@@ -28,7 +28,7 @@ import static org.assertj.core.api.Assertions.*;
  * @see UserService
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CoivitApp.class)
+@SpringApplicationConfiguration(classes = AdminCarpoolingMcbdApp.class)
 @WebAppConfiguration
 @IntegrationTest
 @Transactional

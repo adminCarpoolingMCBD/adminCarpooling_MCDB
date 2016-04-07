@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .controller('AuditsController', AuditsController);
 
     AuditsController.$inject = ['$filter', 'AuditsService', 'ParseLinks'];

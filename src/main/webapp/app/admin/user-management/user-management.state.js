@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];
@@ -14,7 +14,7 @@
             url: '/user-management',
             data: {
                 authorities: ['ROLE_ADMIN'],
-                pageTitle: 'coivit'
+                pageTitle: 'user-management.home.title'
             },
             views: {
                 'content@': {
@@ -22,6 +22,12 @@
                     controller: 'UserManagementController',
                     controllerAs: 'vm'
                 }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('user-management');
+                    return $translate.refresh();
+                }]
             }
         })
         .state('user-management-detail', {
@@ -29,7 +35,7 @@
             url: '/user/:login',
             data: {
                 authorities: ['ROLE_ADMIN'],
-                pageTitle: 'coivit'
+                pageTitle: 'user-management.detail.title'
             },
             views: {
                 'content@': {
@@ -37,6 +43,12 @@
                     controller: 'UserManagementDetailController',
                     controllerAs: 'vm'
                 }
+            },
+            resolve: {
+                translatePartialLoader: ['$translate', '$translatePartialLoader', function ($translate, $translatePartialLoader) {
+                    $translatePartialLoader.addPart('user-management');
+                    return $translate.refresh();
+                }]
             }
         })
         .state('user-management.new', {

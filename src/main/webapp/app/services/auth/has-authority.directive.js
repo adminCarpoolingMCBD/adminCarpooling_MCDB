@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .directive('hasAuthority', hasAuthority);
 
     function hasAuthority(Principal) {

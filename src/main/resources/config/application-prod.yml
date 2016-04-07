@@ -18,7 +18,7 @@ spring:
         livereload:
             enabled: false
     datasource:
-        url: jdbc:mysql://localhost:3306/coivit?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/adminCarpooling_MCBD?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
         password:
@@ -67,7 +67,7 @@ jhipster:
         ehcache:
             maxBytesLocalHeap: 256M
     mail: # specific JHipster mail property, for standard properties see MailProperties
-        from: coivit@localhost
+        from: adminCarpooling_MCBD@localhost
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
         spark:
@@ -78,7 +78,7 @@ jhipster:
             enabled: false
             host: localhost
             port: 2003
-            prefix: coivit
+            prefix: adminCarpooling_MCBD
         logs: # report metrics in the logs
             enabled: false
             reportFrequency: 60 # in seconds

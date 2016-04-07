@@ -153,7 +153,7 @@ public class JHipsterProperties {
 
     public static class Mail {
 
-        private String from = "coivit@localhost";
+        private String from = "adminCarpooling_MCBD@localhost";
 
         public String getFrom() {
             return from;
@@ -189,9 +189,9 @@ public class JHipsterProperties {
 
     public static class Swagger {
 
-        private String title = "coivit API";
+        private String title = "adminCarpooling_MCBD API";
 
-        private String description = "coivit API documentation";
+        private String description = "adminCarpooling_MCBD API documentation";
 
         private String version = "0.0.1";
 
@@ -361,7 +361,7 @@ public class JHipsterProperties {
 
             private int port = 2003;
 
-            private String prefix = "coivit";
+            private String prefix = "adminCarpooling_MCBD";
 
             public boolean isEnabled() {
                 return enabled;

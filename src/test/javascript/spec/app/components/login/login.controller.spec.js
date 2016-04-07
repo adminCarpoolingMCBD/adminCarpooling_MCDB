@@ -2,7 +2,7 @@
 
 describe('Controller Tests', function () {
 
-    beforeEach(module('coivitApp'));
+    beforeEach(module('adminCarpoolingMcbdApp'));
 
     describe('LoginController', function () {
         var $scope, authService;

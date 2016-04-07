@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .factory('Auth', Auth);
 
-    Auth.$inject = ['$rootScope', '$state', '$q', 'Principal', 'AuthServerProvider', 'Account', 'LoginService', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish'];
+    Auth.$inject = ['$rootScope', '$state', '$q', '$translate', 'Principal', 'AuthServerProvider', 'Account', 'LoginService', 'Register', 'Activate', 'Password', 'PasswordResetInit', 'PasswordResetFinish'];
 
-    function Auth ($rootScope, $state, $q, Principal, AuthServerProvider, Account, LoginService, Register, Activate, Password, PasswordResetInit, PasswordResetFinish) {
+    function Auth ($rootScope, $state, $q, $translate, Principal, AuthServerProvider, Account, LoginService, Register, Activate, Password, PasswordResetInit, PasswordResetFinish) {
         var service = {
             activateAccount: activateAccount,
             authorize: authorize,
@@ -104,6 +104,13 @@
 
             function loginThen (data) {
                 Principal.identity(true).then(function(account) {
+                    // After the login the language will be changed to
+                    // the language selected by the user during his registration
+                    if (account!== null) {
+                        $translate.use(account.langKey).then(function () {
+                            $translate.refresh();
+                        });
+                    }
                     deferred.resolve(data);
                 });
                 return cb();

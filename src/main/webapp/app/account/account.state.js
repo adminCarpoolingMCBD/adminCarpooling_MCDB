@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .config(stateConfig);
 
     stateConfig.$inject = ['$stateProvider'];

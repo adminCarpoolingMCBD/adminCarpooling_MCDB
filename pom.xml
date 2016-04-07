@@ -10,10 +10,10 @@
     </parent>
 
     <groupId>com.mycompany.myapp</groupId>
-    <artifactId>coivit</artifactId>
+    <artifactId>admin-carpooling-mcbd</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>coivit</name>
+    <name>adminCarpooling_MCBD</name>
 
     <repositories>
         <repository>
@@ -556,7 +556,7 @@
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>org.h2.Driver</driver>
-                    <url>jdbc:h2:file:./target/h2db/db/coivit</url>
+                    <url>jdbc:h2:file:./target/h2db/db/admincarpooling_mcbd</url>
                     <defaultSchemaName></defaultSchemaName>
                     <username></username>
                     <password></password>
@@ -601,7 +601,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.1</version>
                 <configuration>
-                    <imageName>coivit</imageName>
+                    <imageName>admincarpooling_mcbd</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>

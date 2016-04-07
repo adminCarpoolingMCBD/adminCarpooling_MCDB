@@ -12,7 +12,7 @@
 
 spring:
     datasource:
-        url: jdbc:h2:mem:coivit;DB_CLOSE_DELAY=-1
+        url: jdbc:h2:mem:adminCarpooling_MCBD;DB_CLOSE_DELAY=-1
         name:
         username:
         password:
@@ -60,12 +60,12 @@ jhipster:
     security:
         rememberMe:
             # security key (this key should be unique for your application, and kept secret)
-            key: 3d6d6975e7534e76244a559479df65febe4d9f0f
+            key: 5eb216a29c3362a91ac2ff33e083fc6cb6fcc806
     metrics: # DropWizard Metrics configuration, used by MetricsConfiguration
         jmx.enabled: true
     swagger:
-        title: coivit API
-        description: coivit API documentation
+        title: adminCarpooling_MCBD API
+        description: adminCarpooling_MCBD API documentation
         version: 0.0.1
         termsOfServiceUrl:
         contactName:

@@ -1,14 +1,14 @@
 version: '2'
 services:
-    coivit-mysql:
-        container_name: coivit-mysql
+    admincarpooling_mcbd-mysql:
+        container_name: admincarpooling_mcbd-mysql
         image: mysql:5.7.11
         # volumes:
-        #     - ~/volumes/jhipster/coivit/mysql/:/var/lib/mysql/
+        #     - ~/volumes/jhipster/adminCarpooling_MCBD/mysql/:/var/lib/mysql/
         environment:
             - MYSQL_USER=root
             - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-            - MYSQL_DATABASE=coivit
+            - MYSQL_DATABASE=admincarpooling_mcbd
         ports:
             - 3306:3306
         command: mysqld --lower_case_table_names=1

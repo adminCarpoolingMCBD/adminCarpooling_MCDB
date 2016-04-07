@@ -1,15 +1,15 @@
 version: '2'
 services:
-    coivit-app:
-        image: coivit
+    admincarpooling_mcbd-app:
+        image: admincarpooling_mcbd
         external_links:
-            - coivit-mysql:mysql
+            - admincarpooling_mcbd-mysql:mysql
         environment:
             - SPRING_PROFILES_ACTIVE=prod
-            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/coivit?useUnicode=true&characterEncoding=utf8&useSSL=false
+            - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/admincarpooling_mcbd?useUnicode=true&characterEncoding=utf8&useSSL=false
         ports:
             - 8080:8080
-    coivit-mysql:
+    admincarpooling_mcbd-mysql:
         extends:
             file: mysql.yml
-            service: coivit-mysql
+            service: admincarpooling_mcbd-mysql

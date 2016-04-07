@@ -1,7 +1,9 @@
-// Generated on 2016-04-03 using generator-jhipster 3.0.0
+// Generated on 2016-04-07 using generator-jhipster 3.0.0
 'use strict';
 
 var gulp = require('gulp'),
+    expect = require('gulp-expect-file'),
+    sass = require('gulp-sass'),
     rev = require('gulp-rev'),
     templateCache = require('gulp-angular-templatecache'),
     htmlmin = require('gulp-htmlmin'),
@@ -26,6 +28,7 @@ var handleErrors = require('./gulp/handleErrors'),
     util = require('./gulp/utils'),
     build = require('./gulp/build');
 
+var yorc = require('./.yo-rc.json')['generator-jhipster'];
 
 var config = require('./gulp/config');
 
@@ -35,16 +38,10 @@ gulp.task('clean', function () {
 
 gulp.task('copy', function () {
     return es.merge( 
-        gulp.src(config.bower + 'bootstrap/fonts/*.*')
+        gulp.src(config.app + 'i18n/**')
         .pipe(plumber({errorHandler: handleErrors}))
-        .pipe(changed(config.dist + 'content/fonts/'))
-        .pipe(rev())
-        .pipe(gulp.dest(config.dist + 'content/fonts/'))
-        .pipe(rev.manifest(config.revManifest, {
-            base: config.dist,
-            merge: true
-        }))
-        .pipe(gulp.dest(config.dist)),
+        .pipe(changed(config.dist + 'i18n/'))
+        .pipe(gulp.dest(config.dist + 'i18n/')),
         gulp.src(config.app + 'content/**/*.{woff,woff2,svg,ttf,eot,otf}')
         .pipe(plumber({errorHandler: handleErrors}))
         .pipe(changed(config.dist + 'content/fonts/'))
@@ -78,9 +75,33 @@ gulp.task('images', function () {
         .pipe(browserSync.reload({stream: true}));
 });
 
+gulp.task('sass', function () {
+    return es.merge(
+        gulp.src(config.sassSrc)
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(expect(config.sassSrc))
+        .pipe(changed(config.cssDir, {extension: '.css'}))
+        .pipe(sass({includePaths:config.bower}).on('error', sass.logError))
+        .pipe(gulp.dest(config.cssDir)),
+        gulp.src(config.bower + '**/fonts/**/*.{woff,woff2,svg,ttf,eot,otf}')
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(changed(config.app + 'content/fonts'))
+        .pipe(flatten())
+        .pipe(gulp.dest(config.app + 'content/fonts'))
+    );
+});
 
+gulp.task('languages', function () {
+    var locales = yorc.languages.map(function (locale) {
+        return config.bower + 'angular-i18n/angular-locale_' + locale + '.js';
+    });
+    return gulp.src(locales)
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(changed(config.app + 'i18n/'))
+        .pipe(gulp.dest(config.app + 'i18n/'));
+});
 
-gulp.task('styles', [], function () {
+gulp.task('styles', ['sass'], function () {
     return gulp.src(config.app + 'content/css')
         .pipe(browserSync.reload({stream: true}));
 });
@@ -99,12 +120,17 @@ gulp.task('wiredep:app', function () {
         .pipe(wiredep({
             exclude: [
                 /angular-i18n/,  // localizations are loaded dynamically
-                'bower_components/bootstrap/dist/js/' // exclude bootstrap js files as we use ui-bootstrap
+                'bower_components/bootstrap-sass/assets/javascripts/' // Exclude Bootstrap js files as we use ui-bootstrap
             ]
         }))
         .pipe(gulp.dest(config.app));
 
-    return stream;
+    return es.merge(stream, gulp.src(config.sassSrc)
+        .pipe(plumber({errorHandler: handleErrors}))
+        .pipe(wiredep({
+            ignorePath: /\.\.\/webapp\/bower_components\// // remove ../webapp/bower_components/ from paths of injected sass files
+        }))
+        .pipe(gulp.dest(config.scss)));
 });
 
 gulp.task('wiredep:test', function () {
@@ -114,7 +140,7 @@ gulp.task('wiredep:test', function () {
             exclude: [
                 /angular-i18n/,  // localizations are loaded dynamically
                 /angular-scenario/,
-                'bower_components/bootstrap/dist/js/' // exclude Bootstrap js files as we use ui-bootstrap
+                'bower_components/bootstrap-sass/assets/javascripts/' // Exclude Bootstrap js files as we use ui-bootstrap
             ],
             ignorePath: /\.\.\/\.\.\//, // remove ../../ from paths of injected JavaScript files
             devDependencies: true,
@@ -139,7 +165,7 @@ gulp.task('html', function () {
     return gulp.src(config.app + 'app/**/*.html')
         .pipe(htmlmin({collapseWhitespace: true}))
         .pipe(templateCache({
-            module: 'coivitApp',
+            module: 'adminCarpoolingMcbdApp',
             root: 'app/',
             moduleSystem: 'IIFE'
         }))
@@ -149,7 +175,7 @@ gulp.task('html', function () {
 gulp.task('ngconstant:dev', function () {
     return ngConstant({
         dest: 'app.constants.js',
-        name: 'coivitApp',
+        name: 'adminCarpoolingMcbdApp',
         deps: false,
         noFile: true,
         interpolate: /\{%=(.+?)%\}/g,
@@ -170,7 +196,7 @@ gulp.task('ngconstant:dev', function () {
 gulp.task('ngconstant:prod', function () {
     return ngConstant({
         dest: 'app.constants.js',
-        name: 'coivitApp',
+        name: 'adminCarpoolingMcbdApp',
         deps: false,
         noFile: true,
         interpolate: /\{%=(.+?)%\}/g,
@@ -219,14 +245,14 @@ gulp.task('test', ['wiredep:test', 'ngconstant:dev'], function (done) {
 gulp.task('watch', function () {
     gulp.watch('bower.json', ['install']);
     gulp.watch(['gulpfile.js', 'pom.xml'], ['ngconstant:dev']);
-    gulp.watch(config.app + 'content/css/**/*.css', ['styles']);
+    gulp.watch(config.sassSrc, ['styles']);
     gulp.watch(config.app + 'content/images/**', ['images']);
     gulp.watch(config.app + 'app/**/*.js', ['inject']);
     gulp.watch([config.app + '*.html', config.app + 'app/**', config.app + 'i18n/**']).on('change', browserSync.reload);
 });
 
 gulp.task('install', function () {
-    runSequence(['wiredep', 'ngconstant:dev'], 'inject');
+    runSequence(['wiredep', 'ngconstant:dev'], 'sass', 'languages', 'inject');
 });
 
 gulp.task('serve', function () {
@@ -234,7 +260,7 @@ gulp.task('serve', function () {
 });
 
 gulp.task('build', ['clean'], function (cb) {
-    runSequence(['copy', 'wiredep:app', 'ngconstant:prod'], 'inject', 'assets:prod', cb);
+    runSequence(['copy', 'wiredep:app', 'ngconstant:prod', 'languages'], 'inject', 'assets:prod', cb);
 });
 
 gulp.task('default', ['serve']);

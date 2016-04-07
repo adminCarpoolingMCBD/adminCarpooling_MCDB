@@ -14,6 +14,6 @@
     };
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .component('jhiItemCount', jhiItemCount);
 })();

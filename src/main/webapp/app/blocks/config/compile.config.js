@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .config(compileServiceConfig);
 
     compileServiceConfig.$inject = ['$compileProvider', 'ENV'];

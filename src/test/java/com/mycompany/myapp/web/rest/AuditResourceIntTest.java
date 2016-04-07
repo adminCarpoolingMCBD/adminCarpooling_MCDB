@@ -1,6 +1,6 @@
 package com.mycompany.myapp.web.rest;
 
-import com.mycompany.myapp.CoivitApp;
+import com.mycompany.myapp.AdminCarpoolingMcbdApp;
 import com.mycompany.myapp.config.audit.AuditEventConverter;
 import com.mycompany.myapp.domain.PersistentAuditEvent;
 import com.mycompany.myapp.repository.PersistenceAuditEventRepository;
@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  *
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = CoivitApp.class)
+@SpringApplicationConfiguration(classes = AdminCarpoolingMcbdApp.class)
 @WebAppConfiguration
 @IntegrationTest
 @Transactional

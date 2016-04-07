@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .controller('UserManagementController', UserManagementController);
 
-    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'paginationConstants'];
+    UserManagementController.$inject = ['Principal', 'User', 'ParseLinks', 'paginationConstants', 'JhiLanguageService'];
 
-    function UserManagementController(Principal, User, ParseLinks, paginationConstants) {
+    function UserManagementController(Principal, User, ParseLinks, paginationConstants, JhiLanguageService) {
         var vm = this;
 
         vm.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
@@ -26,6 +26,9 @@
         vm.loadAll();
 
         
+        JhiLanguageService.getAll().then(function (languages) {
+            vm.languages = languages;
+        });
 
         Principal.identity().then(function(account) {
             vm.currentAccount = account;

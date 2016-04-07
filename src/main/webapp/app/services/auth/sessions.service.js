@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .factory('Sessions', Sessions);
 
     Sessions.$inject = ['$resource'];

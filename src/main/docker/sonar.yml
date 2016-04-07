@@ -1,7 +1,7 @@
 version: '2'
 services:
-    coivit-sonar:
-        container_name: coivit-sonar
+    admincarpooling_mcbd-sonar:
+        container_name: admincarpooling_mcbd-sonar
         image: sonarqube:5.3
         ports:
             - 9000:9000

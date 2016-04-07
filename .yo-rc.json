@@ -1,7 +1,7 @@
 {
   "generator-jhipster": {
     "jhipsterVersion": "3.0.0",
-    "baseName": "coivit",
+    "baseName": "adminCarpooling_MCBD",
     "packageName": "com.mycompany.myapp",
     "packageFolder": "com/mycompany/myapp",
     "serverPort": "8080",
@@ -15,12 +15,17 @@
     "searchEngine": "no",
     "buildTool": "maven",
     "enableSocialSignIn": false,
-    "rememberMeKey": "3d6d6975e7534e76244a559479df65febe4d9f0f",
-    "useSass": false,
+    "rememberMeKey": "5eb216a29c3362a91ac2ff33e083fc6cb6fcc806",
+    "useSass": true,
     "applicationType": "monolith",
     "testFrameworks": [
       "gatling"
     ],
-    "enableTranslation": false
+    "enableTranslation": true,
+    "nativeLanguage": "en",
+    "languages": [
+      "en",
+      "fr"
+    ]
   }
 }

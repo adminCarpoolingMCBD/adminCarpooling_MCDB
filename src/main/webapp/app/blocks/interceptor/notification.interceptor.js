@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .factory('notificationInterceptor', notificationInterceptor);
 
     notificationInterceptor.$inject = ['$q', 'AlertService'];
@@ -15,9 +15,9 @@
         return service;
 
         function response (response) {
-            var alertKey = response.headers('X-coivitApp-alert');
+            var alertKey = response.headers('X-adminCarpoolingMcbdApp-alert');
             if (angular.isString(alertKey)) {
-                AlertService.success(alertKey, { param : response.headers('X-coivitApp-params')});
+                AlertService.success(alertKey, { param : response.headers('X-adminCarpoolingMcbdApp-params')});
             }
             return response;
         }

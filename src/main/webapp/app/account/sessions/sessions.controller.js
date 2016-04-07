@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .controller('SessionsController', SessionsController);
 
     SessionsController.$inject = ['Sessions', 'Principal'];

@@ -3,7 +3,7 @@
     'use strict';
 
     angular
-        .module('coivitApp')
+        .module('adminCarpoolingMcbdApp')
         .factory('Base64', Base64);
 
     function Base64 () {
